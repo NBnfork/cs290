@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Let's get asynchronous! </title>
+    <script>
+        var apiKey = '85cae39dd4b7e88676d6e6b53815d6b4';
+
+        document.addEventListener('DOMContentLoaded', bindButtons);
+
+        function bindButtons(){
+            document.getElementById('submitInput').addEventListener('click', function(event){
+                var req = new XMLHttpRequest();
+                var payload = document.getElementById('userInput').value;
+                //parse userInput
+                if(parseInt(payload, 10)){
+                    var requestURLzip1 = "http://api.openweathermap.org/data/2.5/weather?zip="+ payload;
+                    var requestURLzip2 = requestURL1 + ",us&units=imperial,or&appid=";
+                    req.open("GET", requestURLzip2 + apiKey, true);
+                }
+                else{
+                    var requestURL1 = "http://api.openweathermap.org/data/2.5/weather?q="+ payload;
+                    var requestURL2 = requestURL1 + "&units=imperial,USA,or&appid=";
+                    req.open("GET", requestURL2 + apiKey, true);
+                }
+                req.addEventListener('load' ,function(){
+                    if(req.status >= 200 && req.status < 400){
+                        var response = JSON.parse(req.responseText);
+                        document.getElementById('location').textContent = response.name;
+                        document.getElementById('currentTemp').textContent = (response.main.temp * 9/5) - 459.67 + 'F';
+                        document.getElementById('humidity').textContent = response.main.humidity + '%';
+                    }else{
+                        console.log("Error in network request: " + req.statusText);
+                    }
+                });
+                req.send(null);
+                event.preventDefault();
+            })
+        }
+    </script>
+</head>
+<body>
+<form>
+    <fieldset>
+        <legend>Enter city or zip for weather information</legend>
+        <label for="userInput"></label>
+        <input type="text" name="userInput" id="userInput">
+        <input type="submit" id="submitInput">
+    </fieldset>
+</form>
+<div>
+    <h3>Weather results</h3>
+    <ul>
+        <li><span>Location: </span><span id="location"></span></li>
+        <li><span>Current Temp: </span><span id="currentTemp"></span></li>
+        <li><span>Humidity: </span><span id="humidity"></span></li>
+    </ul>
+</div>
+<form>
+    <fieldset>
+        <legend>Enter any string to send a post request</legend>
+        <label for="postInput"></label>
+        <input type="text" name="postInput" id="postInput">
+        <input type="submit" id="subInput">
+
+    </fieldset>
+</form>
+<div>
+    <h3>post request results</h3>
+    <ul>
+        <li><span> Here is what you sent: </span><span id ="postSent"></span></li>
+        <li><span> Here is what came back: </span><span id ="postReply"></span></li>
+    </ul>
+</div>
+<script src="PostRequest.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        var apiKey = '85cae39dd4b7e88676d6e6b53815d6b4';
+        var req = new XMLHttpRequest();
+        req.open("GET", "http://api.openweathermap.org/data/2.5/weather?zip=46131,or&appid=" + apiKey, false);
+        req.send(null);
+        console.log(JSON.parse(req.responseText));
+        console.log("Http" + apiKey, "the" + apiKey);
+    </script>
+</head>
+<body>
+</body>
+</html>

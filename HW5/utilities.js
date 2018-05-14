@@ -8,14 +8,12 @@ function elt(type, ...children) {
 }
 
 
-function makeButton(name) {
-//code from: https://www.w3schools.com/jsref/met_document_createelement.asp
+function makeButton(name, clickFunction) {
+//code modified from: https://www.w3schools.com/jsref/met_document_createelement.asp
     var btn = document.createElement("BUTTON");        // Create a <button> element
     var t = document.createTextNode(name);       // Create a text node
     btn.appendChild(t);                                // Append the text to <button>
     document.body.appendChild(btn);                    // Append <button> to <body>
-}
-
-function addEListener(name, type, funcName){
-    document.getElementById(name).addEventListener(type , funcName);
+    //add click event to button
+    btn.addEventListener("click" , clickFunction);
 }
