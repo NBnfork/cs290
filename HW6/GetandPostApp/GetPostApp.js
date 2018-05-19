@@ -8,16 +8,15 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 6556);
 
-
+//make get callback
 app.get('/',function(req,res){
     //make a array for query line data
     var queryData = [];
     //push each pair into array
     for(var p in req.query){
         queryData.push({'name':p,'value':req.query[p]});
-        console.log(req.query[p]);
     }
-    //set the context and callback
+    //set the context and render
     var context= {};
     context.dataArray = queryData;
     res.render('getOutput', context);
@@ -29,7 +28,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-
+//make post call back
 app.post('/',function(req,res){
     //make a array for query line data
     var queryData = [];
@@ -37,20 +36,16 @@ app.post('/',function(req,res){
     for(var r in req.query){
         queryData.push({'name':r, 'value':req.query[r]});
     }
-    //set the context and callback
-    var context= {};
-    context.dataArray = queryData;
-    res.render('postOutput', context);
-
     //use same process but access 'body' instead of query
     var postData = [];
     for(var q in req.body){
         postData.push({'name':q,'value':req.body[q]});
     }
-    //set the context and callback
-    var contextPost= {};
-    contextPost.dataList = postData;
-    res.render('postOutput', contextPost);
+    //set the context and render
+    var context= {};
+    context.dataArray = queryData;
+    context.postArray = postData;
+    res.render('postOutput', context);
 
 });
 

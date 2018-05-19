@@ -1,8 +1,15 @@
 <h1>POST Request Received.</h1>
 <div></div>
-<h2>Data received:</h2>
+<h2>Data received via URL:</h2>
 <ul>
-    {{#each param}}
+    {{#each dataArray}}
+        <li>{{this.name}}: {{this.value}}</li>
+    {{/each}}
+</ul>
+<div></div>
+<h2>Data received via post.body:</h2>
+<ul>
+    {{#each postArray}}
         <li>{{this.name}}: {{this.value}}</li>
     {{/each}}
 </ul>
