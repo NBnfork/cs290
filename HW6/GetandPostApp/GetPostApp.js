@@ -31,7 +31,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-/
+
 app.post('/',function(req,res){
     //make a array for query line data
     var queryData = [];
