@@ -9,7 +9,7 @@ app.set('view engine', 'handlebars');
 app.set('port', 6556);
 
 
-app.get('/',function(req,res){
+app.get('getOutput',function(req,res){
     //make a array for query line data
     var queryData = [];
     //push each pair into array
@@ -19,8 +19,6 @@ app.get('/',function(req,res){
     //set the context and callback
     var context= {};
     context.dataArray = queryData;
-    console.log(queryData);
-
     res.render('getOutput', context);
 });
 
@@ -31,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 
-app.post('/',function(req,res){
+app.post('postOutput',function(req,res){
     //make a array for query line data
     var queryData = [];
     //push each pair into array
