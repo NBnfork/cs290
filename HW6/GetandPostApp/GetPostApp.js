@@ -23,7 +23,7 @@ app.get('/',function(req,res){
     //set the context and callback
     var context= {};
     context.dataArray = queryData;
-    res.render('/', context);
+    res.render('listOutput', context);
 });
 
 //set-up bodyParser for POST requests
@@ -46,7 +46,7 @@ app.post('/',function(req,res){
     //set the context and callback
     var context= {};
     context.dataArray = queryData;
-    res.render('/', context);
+    res.render('listOutput', context);
 
     //use same process but access 'body' instead of query
     var postData = [];
@@ -57,7 +57,7 @@ app.post('/',function(req,res){
     //set the context and callback
     var contextPost= {};
     contextPost.dataList = postData;
-    res.render('/', contextPost);
+    res.render('listOutput', contextPost);
 
 });
 
