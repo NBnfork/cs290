@@ -15,6 +15,7 @@ app.get('/',function(req,res){
     //push each pair into array
     for(var p in req.query){
         queryData.push({'name':p,'value':req.query[p]});
+        console.log(req.query[p]);
     }
     //set the context and callback
     var context= {};
@@ -29,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 
-app.post('postOutput',function(req,res){
+app.post('/',function(req,res){
     //make a array for query line data
     var queryData = [];
     //push each pair into array
