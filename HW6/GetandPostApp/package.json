@@ -1,12 +1,12 @@
 {
-  "name": "hello-world",
+  "name": "GetPostApp",
   "version": "1.0.0",
-  "description": "Hello world with express and node.js",
-  "main": "app.js",
+  "description": "This app will demostrate my noobie express,and express-handlbars skills",
+  "main": "GetPostApp.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "OSU",
+  "author": "Noah Buchen",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.13.3",
