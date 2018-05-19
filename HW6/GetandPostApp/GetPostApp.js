@@ -9,7 +9,8 @@ app.set('view engine', 'handlebars');
 app.set('port', 6556);
 
 
-app.get('getLoop',function(req,res){
+app.get('/',function(req,res){
+    res.render('home');
     //make a array for query line data
     var queryData = [];
     //push each pair into array
@@ -22,7 +23,7 @@ app.get('getLoop',function(req,res){
     //set the context and callback
     var context= {};
     context.dataArray = queryData;
-    res.render('getLoop', context);
+    res.render('/', context);
 });
 
 //set-up bodyParser for POST requests
@@ -45,7 +46,7 @@ app.post('/',function(req,res){
     //set the context and callback
     var context= {};
     context.dataArray = queryData;
-    res.render('getLoop', context);
+    res.render('/', context);
 
     //use same process but access 'body' instead of query
     var postData = [];
@@ -56,7 +57,7 @@ app.post('/',function(req,res){
     //set the context and callback
     var contextPost= {};
     contextPost.dataList = postData;
-    res.render('getLoop', contextPost);
+    res.render('/', contextPost);
 
 });
 
