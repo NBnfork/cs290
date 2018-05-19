@@ -9,7 +9,7 @@ app.set('view engine', 'handlebars');
 app.set('port', 6556);
 
 
-app.get('getOutput',function(req,res){
+app.get('/',function(req,res){
     //make a array for query line data
     var queryData = [];
     //push each pair into array
