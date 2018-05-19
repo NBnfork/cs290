@@ -10,20 +10,16 @@ app.set('port', 6556);
 
 
 app.get('/',function(req,res){
-    res.render('home');
     //make a array for query line data
     var queryData = [];
     //push each pair into array
     for(var p in req.query){
         queryData.push({'name':p, 'value':req.query[p]})
     }
-    //send request type for output
-    var requestType = {name: 'GET'};
-    res.render('home.handlebars', requestType);
     //set the context and callback
     var context= {};
     context.dataArray = queryData;
-    res.render('listOutput', context);
+    res.render('getOutput', context);
 });
 
 //set-up bodyParser for POST requests
@@ -40,24 +36,20 @@ app.post('/',function(req,res){
     for(var p in req.query){
         queryData.push({'name':p, 'value':req.query})
     }
-    //send type request type for output
-    var requestType = {name: 'Post'};
-    res.render('home.handlebars', requestType);
     //set the context and callback
     var context= {};
     context.dataArray = queryData;
-    res.render('listOutput', context);
+    res.render('postOutput', context);
 
     //use same process but access 'body' instead of query
     var postData = [];
     for(var q in req.body){
         postData.push({'name':q, 'value':req.body[q]})
     }
-
     //set the context and callback
     var contextPost= {};
     contextPost.dataList = postData;
-    res.render('listOutput', contextPost);
+    res.render('postOutput', contextPost);
 
 });
 
