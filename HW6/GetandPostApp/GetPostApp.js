@@ -14,11 +14,13 @@ app.get('/',function(req,res){
     var queryData = [];
     //push each pair into array
     for(var p in req.query){
-        queryData.push({'name':p, 'value':req.query[p]})
+        queryData.push({'name':p,'value':req.query[p]});
     }
     //set the context and callback
     var context= {};
     context.dataArray = queryData;
+    console.log(queryData);
+
     res.render('getOutput', context);
 });
 
@@ -33,8 +35,8 @@ app.post('/',function(req,res){
     //make a array for query line data
     var queryData = [];
     //push each pair into array
-    for(var p in req.query){
-        queryData.push({'name':p, 'value':req.query})
+    for(var r in req.query){
+        queryData.push({'name':r, 'value':req.query[r]});
     }
     //set the context and callback
     var context= {};
@@ -44,7 +46,7 @@ app.post('/',function(req,res){
     //use same process but access 'body' instead of query
     var postData = [];
     for(var q in req.body){
-        postData.push({'name':q, 'value':req.body[q]})
+        postData.push({'name':q,'value':req.body[q]});
     }
     //set the context and callback
     var contextPost= {};
