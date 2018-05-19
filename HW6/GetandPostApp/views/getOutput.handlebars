@@ -2,5 +2,7 @@
 <ul>
     {{#each param}}
         <li>{{this.name}}: {{this.value}}</li>
+    {{else}}
+        <p class="empty">No Content</p>
     {{/each}}
 </ul>
