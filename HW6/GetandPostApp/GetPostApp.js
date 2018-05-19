@@ -17,9 +17,9 @@ app.get('/',function(req,res){
     for(var p in req.query){
         queryData.push({'name':p, 'value':req.query[p]})
     }
-    //send type request type for output
-    var postType = "GET";
-    res.render('home.handlebars', postType)
+    //send request type for output
+    var requestType = {name: 'GET'};
+    res.render('home.handlebars', requestType);
     //set the context and callback
     var context= {};
     context.dataArray = queryData;
@@ -41,8 +41,8 @@ app.post('/',function(req,res){
         queryData.push({'name':p, 'value':req.query})
     }
     //send type request type for output
-    var postType = "POST";
-    res.render('home.handlebars', postType)
+    var requestType = {name: 'Post'};
+    res.render('home.handlebars', requestType);
     //set the context and callback
     var context= {};
     context.dataArray = queryData;
