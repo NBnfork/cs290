@@ -1,0 +1,56 @@
+body {
+    background: url("content/backgroundCA.jpg") repeat;
+    font-family: sans-serif;
+
+}
+.content{
+    max-width: 1500px;
+    margin: auto;
+    padding: 10px;
+}
+
+.contentHeader{
+    max-width: 500px;
+    margin:auto;
+    padding:10px;
+}
+
+h1.mainTitle {
+    font-style: italic;
+    font-size: 60px;
+    width: fit-content;
+}
+ul.navbar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000000;
+}
+ul {
+    line-height: 30px ;
+
+}
+
+li {
+    float: left;
+
+}
+li a{
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align: center;
+
+}
+li a:hover {
+    background-color: #e2e2e2;
+    color: white;
+}
+
+.active {
+    background-color: #adadad;
+}
+
+
