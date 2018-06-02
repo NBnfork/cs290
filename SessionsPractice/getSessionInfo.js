@@ -8,7 +8,11 @@ app.set('port', 6556);
 
 var session = require('express-session');
 
-app.use (session({secret:'dummypassword'}));
+app.use (session({
+    secret:'dummypassword',
+    resave: true,
+    saveUninitialized: true
+}));
 
 app.get('/newUser', function(req, res, next){
     var context = {};
