@@ -1,7 +1,8 @@
 var express = require('express');
 
 var app = express();
-
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
 app.set('port', 6556);
 
 var session = require('express-session');
