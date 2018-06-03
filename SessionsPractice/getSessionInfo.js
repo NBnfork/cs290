@@ -42,7 +42,7 @@
 
         //If there is no session, go to the main page.
         if(!req.session.name){
-            res.render('newSession', context);
+            res.render('newUser', context);
             return;
         }
 
@@ -61,5 +61,5 @@
         context.toDoCount = req.session.toDo.length;
         context.toDo = req.session.toDo;
         console.log(context.toDo);
-        res.render('toDo',context);
+        res.render('returningUser',context);
     });
