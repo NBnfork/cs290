@@ -17,7 +17,7 @@
         var context = {};
         //no session go to newUser
         if (!req.session.name) {
-            res.render('newUser', context);
+            res.render('returningUser', context);
             return;
         }
         context.name = req.session.name;
