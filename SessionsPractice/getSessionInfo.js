@@ -4,7 +4,7 @@
     var handlebars = require('express-handlebars').create({defaultLayout:'main'});
     app.engine('handlebars', handlebars.engine);
     app.set('view engine', 'handlebars');
-    app.set('port', 8080);
+    app.set('port', 10001);
 
     var session = require('express-session');
 
@@ -26,4 +26,7 @@
         context.toDo = req.session.toDo || [];
         console.log(context.toDO);
         res.render('returningUser', context);
+    });
+    app.listen(app.get('port'), function(){
+        console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
     });
