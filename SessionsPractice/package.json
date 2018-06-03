@@ -6,6 +6,8 @@
     "express-session": "^1.11.3",
     "forever": "^0.15.3",
     "mysql": "^2.8.0"
+  },
+  "dependencies": {
+    "request": "^2.87.0"
   }
 }
-
