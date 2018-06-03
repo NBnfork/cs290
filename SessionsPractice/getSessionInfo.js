@@ -7,6 +7,7 @@
     app.set('port', 10001);
 
     var session = require('express-session');
+    var bodyParser = require('body-parser');
 
     app.use(session({
         secret: 'dummypassword',
@@ -33,7 +34,6 @@
 
     app.post('/',function(req,res){
         var context = {};
-
         if(req.body['New List']){
             req.session.name = req.body.name;
             req.session.toDo = [];
