@@ -1,12 +1,14 @@
 //database connection
 var mysql = require('mysql');
 var pool = mysql.createPool({
-    host  : 'localhost',
-    user  : 'student',
-    password: 'default',
-    database: 'student'
+    connectionLimit : 10,
+    host  : 'classmysql.engr.oregonstate.edu',
+    user  : 'cs290_buchenn',
+    password: '6556',
+    database: 'cs290_buchenn'
 });
 
+module.exports.pool = pool;
 
 var express = require('express');
 
@@ -45,7 +47,7 @@ app.listen(app.get('port'), function(){
 var mysql = require('mysql');
 var pool = mysql.createPool();
 
-app.get('/reset-table',function(req,res,next){
+app.get('/',function(req,res,next){
     var context = {};
         pool.query("DROP TABLE IF EXISTS workouts", function(err){
         var createString = "CREATE TABLE workouts("+
@@ -54,8 +56,8 @@ app.get('/reset-table',function(req,res,next){
             "ame VARCHAR(255) NOT NULL,"+
             "reps INT,"+
             "weight INT,"+
-            "date DATE,"+
-            "lbs BOOLEAN)";
+            "lbs BOOLEAN,"+
+            "date DATE)";
         pool.query(createString, function(err){
             context.results = "Table reset";
             res.render('home',context);
@@ -63,7 +65,7 @@ app.get('/reset-table',function(req,res,next){
     });
 });
 
-app.get('/insert',function(req,res,next){
+app.get('/',function(req,res,next){
     var context = {};
     mysql.pool.query("INSERT INTO workouts (`name`) VALUES (?)", [req.query.c], function(err, result){
         if(err){

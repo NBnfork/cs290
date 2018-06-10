@@ -1,5 +1,7 @@
 <h1>Exercise Log</h1>
-<br action = >
+
+<form action = >
+        <input type="hidden" name="id">
     <br>
     <label> exercise name:
         <input type="text" name="name_input" size="30" maxlength="100" required>
@@ -23,5 +25,22 @@
     <input type="submit" value="Save">
 </form>
 <table>
-    <tr></tr>
+    <caption>Excerise Log</caption>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>reps</th>
+            <th>weight</th>
+            <th>unit</th>
+            <th>date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>{{name}}</tr>
+        <tr>{{reps}}</tr>
+        <tr>{{weight}}</tr>
+        <tr>{{unit}}</tr>
+        <tr>{{date}}</tr>
+
+    </tbody>
 </table>
