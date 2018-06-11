@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', bindNewSaveButton, loadPage);
 function deleteRow(tableID, currentRow) {
     //sendRequest to DB through node
     var table = document.getElementById(tableID);
-    document.getElementById('delete').addEventListener('click', function (event) {
+    document.getElementById('Delete').addEventListener('click', function (event) {
         var req = new XMLHttpRequest();
         //build query string
         let payload = currentRow.id;
@@ -33,7 +33,7 @@ function deleteRow(tableID, currentRow) {
 }
 function updateRow(tableID, currentRow){
     var table = document.getElementById(tableID);
-    document.getElementById('delete').addEventListener('click', function (event) {
+    document.getElementById('Edit').addEventListener('click', function (event) {
         var req = new XMLHttpRequest();
         //build query string
         let payload = currentRow.id;
@@ -106,6 +106,7 @@ function insertRowFromDB(tableID, response){
                 break;
             case 6: {
                 cell.type = "BUTTON";
+                cell.id = "Edit";
                 var btn = document.createElement("BUTTON");        // Create a <button> element
                 var t = document.createTextNode("Edit");       // Create a text node
                 btn.appendChild(t);                                // Append the text to <button>
