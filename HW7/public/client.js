@@ -245,7 +245,7 @@ function buildTable() {
 function loadPage(){
     var req = new XMLHttpRequest();
     req.addEventListener('load', function () {
-        req.open('GET', 'flip1.oregonstate.edu:10001/');
+        req.open('GET', 'flip1.oregonstate.edu:10002/');
         if (req.status > 400) {
             alert("Network Request Error")
         }
