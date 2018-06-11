@@ -1,11 +1,12 @@
 //database connection
+
 var mysql = require('mysql');
 var pool = mysql.createPool({
     connectionLimit : 10,
-    host  : 'mysql.eecs.oregonstate.edu',
-    user  : 'cs290_buchenn',
-    password: '6556',
-    database: 'cs290_buchenn',
+    host            : 'mysql.eecs.oregonstate.edu',
+    user            : 'cs290_buchenn',
+    password        : '6556',
+    database        : 'cs290_buchenn'
 });
 
 var express = require('express');
@@ -27,8 +28,7 @@ app.get('/',function(req,res){
 
 
 //database set-up
-var mysql = require('mysql');
-var pool = mysql.createPool();
+
 
 app.get('/',function(req,res,next){
     var context = {};
