@@ -2,11 +2,10 @@
 var mysql = require('mysql');
 var pool = mysql.createPool({
     connectionLimit : 10,
-    host  : 'classmysql.engr.oregonstate.edu',
+    host  : 'mysql.eecs.oregonstate.edu',
     user  : 'cs290_buchenn',
     password: '6556',
     database: 'cs290_buchenn',
-    acquireTimeout: 200
 });
 
 var express = require('express');
