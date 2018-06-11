@@ -5,10 +5,9 @@ var pool = mysql.createPool({
     host  : 'classmysql.engr.oregonstate.edu',
     user  : 'cs290_buchenn',
     password: '6556',
-    database: 'cs290_buchenn'
+    database: 'cs290_buchenn',
+    acquireTimeout: 200
 });
-
-module.exports.pool = pool;
 
 var express = require('express');
 
