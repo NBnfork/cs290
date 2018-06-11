@@ -5,9 +5,7 @@ var pool = mysql.createPool({
     host  : 'classmysql.engr.oregonstate.edu',
     user  : 'cs290_buchenn',
     password: '6556',
-    database: 'cs290_buchenn',
-    datestring: 'date',
-    acquireTimeout: 300
+    database: 'cs290_buchenn'
 });
 
 module.exports.pool = pool;
@@ -28,28 +26,25 @@ app.get('/',function(req,res){
     res.render('home.handlebars')
 });
 
-app.use(function(req,res){
-    res.type('text/plain');
-    res.status(404);
-    res.send('404 - Not Found');
-});
 
-app.use(function(err, req, res, next){
-    console.error(err.stack);
-    res.type('plain/text');
-    res.status(500);
-    res.send('500 - Server Error');
-});
-
-app.listen(app.get('port'), function(){
-    console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
-});
 
 //database set-up
 var mysql = require('mysql');
 var pool = mysql.createPool();
 
 app.get('/',function(req,res,next){
+    var context = {};
+    mysql.pool.query("INSERT INTO workouts (`name`) VALUES (?)", [req.query.c], function(err, result){
+        if(err){
+            next(err);
+            return;
+        }
+        context.results = "Inserted id " + result.insertId;
+
+    });
+});
+
+app.get('/reset-table',function(req,res,next){
     var context = {};
         pool.query("DROP TABLE IF EXISTS workouts", function(err){
         var createString = "CREATE TABLE workouts("+
@@ -67,14 +62,19 @@ app.get('/',function(req,res,next){
     });
 });
 
-app.get('/',function(req,res,next){
-    var context = {};
-    mysql.pool.query("INSERT INTO workouts (`name`) VALUES (?)", [req.query.c], function(err, result){
-        if(err){
-            next(err);
-            return;
-        }
-        context.results = "Inserted id " + result.insertId;
-        res.render('home',context);
-    });
+app.use(function(req,res){
+    res.type('text/plain');
+    res.status(404);
+    res.send('404 - Not Found');
+});
+
+app.use(function(err, req, res, next){
+    console.error(err.stack);
+    res.type('plain/text');
+    res.status(500);
+    res.send('500 - Server Error');
+});
+
+app.listen(app.get('port'), function(){
+    console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
